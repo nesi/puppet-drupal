@@ -17,7 +17,7 @@ Provided are some Powershell scripts that can be used to manage the blank puppet
 
 ## Enable execution of unsigned scripts
 
-Powershell will not run unsigned scripts by default, this can be corrected by executing the following command in an Administrator Powershell. This is required before any of the other powershell scripts will run.
+Powershell will not run unsigned scripts by default, this can be enabled by executing the following command in an Administrator Powershell. This is required before any of the other powershell scripts will run.
 
 1. Click *Start* menu
 2. Type "powershell" in the *Search programs and files* box, do not press enter.
@@ -27,12 +27,13 @@ Powershell will not run unsigned scripts by default, this can be corrected by ex
     set-executionpolicy remotesigned
 6. Press *Enter* again to confirm the policy change
 
-## Change author
+## Change author and module
+
+This updates the author and module name using the `.orig` templates. This script can be re-run, creating new templates. This may not be advisable in later stages of module development.
 
 1. Start Powershell in the blank module directory
-2. Run the `setauthor.ps1` script:
-    ./setauthor.ps1 newauthor
-3. This creates a new `Modulefile` from `Modulefile.orig`, open it in an editor and check it's correct.
+2. Run the `unblank.ps1` script:
+    ./setauthor.ps1 newauthor newmodule
 
 # Frequently Asked Questions
 
@@ -51,5 +52,3 @@ This module is intended for:
 1. Writing a module where puppet is not or can not be installed
 
 2. Use as a starting point for a collection of modules and prepopulated with things like licensing, boiler plate, pictures of cats, etc. etc.
-
-3. 
