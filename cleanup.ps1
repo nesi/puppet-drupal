@@ -1,5 +1,5 @@
 echo "Cleaning up template..."
-if ((Test-Path 'Modulefile') -and (Test-Path 'manifests/init.pp') -and (Test-Path 'test/init.pp.orig')){
+if ((Test-Path 'Modulefile') -and (Test-Path 'manifests/init.pp') -and (Test-Path 'tests/init.pp')){
 	echo "Deleting .orig templates..."
 	objFSO.DeleteFile('Modulefile.orig')
 	objFSO.DeleteFile('manifests/init.pp.orig')
