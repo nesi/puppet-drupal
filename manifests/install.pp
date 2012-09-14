@@ -1,7 +1,6 @@
-# Class: drupal
+# Class: drupal::install
 #
-# This module does the sanity checks and validation before installing
-# Drupal with drupal::install
+# This module installs drupal
 #
 # Parameters:
 #
@@ -28,16 +27,14 @@
 #     along with the drupal Puppet module.  If not, see <http://www.gnu.org/licenses/>.
 
 # [Remember: No empty lines between comments and class definition]
-class drupal (
-	$ensure	 = instelled,
-	$version = 7,
-	$drush	 = installed
+class drupal::install(
+	$ensure,
+	$version,
+	$drush
 ){
 
 	# Check for dependent modules, which also hints load order
 
-	# Use the NeSI php Puppet Module
-	require php
 	# Use the PuppetLabs mySQL Puppet Module
 	require mysql
 	require mysql::server
@@ -46,18 +43,17 @@ class drupal (
 	require apache::mod::php
 	require apache::mod::ssl
 
+	class {'drupal::params':
+		version => $version,
+	}
 
-	case $operatingsystem{
-		Ubuntu:{
-			class{'drupal::install':
-				ensure	=> $ensure,
-				version => $version,
-				drush		=> $drush,
-			}
-		}
-		default:{
-			warning("The Drupal module is not configured for ${operatingsytem} on ${fqdn}.")
-		}
+	package{$drupal::params::drupal_package:
+		ensure 	=> $ensure,
+		require => Php::Mod['gd','mysql']
+	}
 
+	package{$drupal::params::drush_package:
+		ensure	=> $drush,
+		require => Package[$drupal::params::drupal_package]
 	}
 }

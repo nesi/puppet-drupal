@@ -2,6 +2,14 @@
 
 This puppet module installs, configures, and manages Drupal.
 
+# Dependencies
+
+This module is dependent on the following modules:
+
+* PuppetLabs mysql module https://github.com/puppetlabs/puppetlabs-mysql
+* NeSI fork of the PuppetLabs Apache module https://github.com/nesi/puppetlabs-apache
+* NeSI php module https://github.com/nesi/puppet-php
+
 # Licensing
 
 Update your license details here.
