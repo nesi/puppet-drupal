@@ -29,7 +29,7 @@
 
 # [Remember: No empty lines between comments and class definition]
 class drupal (
-	$ensure	 = instelled,
+	$ensure	 = installed,
 	$version = 7,
 	$drush	 = installed
 ){
