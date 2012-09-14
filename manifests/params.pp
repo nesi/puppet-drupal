@@ -34,7 +34,8 @@ class drupal::params(
 		Ubuntu:{
 			$drupal_package = "drupal${version}"
 			$drush_package	= "drush"
-			$drush_bin				= "/usr/bin/drush"
+			$drush_bin			= "/usr/bin/drush"
+			$web_root				= "/var/www"
 		}
 	}
 }
