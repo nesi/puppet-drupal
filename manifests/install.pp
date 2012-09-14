@@ -29,8 +29,7 @@
 # [Remember: No empty lines between comments and class definition]
 class drupal::install(
 	$ensure,
-	$version,
-	$drush
+	$version
 ){
 
 	# Check for dependent modules, which also hints load order
@@ -53,7 +52,7 @@ class drupal::install(
 	}
 
 	package{$drupal::params::drush_package:
-		ensure	=> $drush,
+		ensure	=> $ensure,
 		require => Package[$drupal::params::drupal_package]
 	}
 }

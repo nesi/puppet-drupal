@@ -28,12 +28,13 @@
 
 # [Remember: No empty lines between comments and class definition]
 class drupal::params(
-	$version
+	$version = 7
 ){
 	case $operatingsystem {
 		Ubuntu:{
 			$drupal_package = "drupal${version}"
 			$drush_package	= "drush"
+			$drush_bin				= "/usr/bin/drush"
 		}
 	}
 }

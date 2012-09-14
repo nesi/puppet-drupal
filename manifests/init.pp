@@ -31,7 +31,6 @@
 class drupal (
 	$ensure	 = installed,
 	$version = 7,
-	$drush	 = installed
 ){
 
 	# Check for dependent modules, which also hints load order
@@ -52,7 +51,6 @@ class drupal (
 			class{'drupal::install':
 				ensure	=> $ensure,
 				version => $version,
-				drush		=> $drush,
 			}
 		}
 		default:{
